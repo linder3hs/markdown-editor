@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="h-screen bg-gray-900 text-white grid grid-rows-[auto_1fr_auto] md:grid-rows-[auto_1fr_auto] overflow-hidden"
+  >
+    <header
+      class="row-start-3 md:row-start-1 self-start border-t md:border-b md:border-t-0"
+    >
+      <div class="text-center p-5">
+        <button
+          id="generate-html"
+          class="bg-blue-500 text-white px-5 py-3 rounded-md"
+        >
+          Generar Vista Previa
+        </button>
+      </div>
+    </header>
+    <main class="row-start-2 w-full">
+      <article class="grid grid-cols-1 md:grid-cols-2 h-full">
+        <section class="border-b md:border-r md:border-b-0 h-full p-4">
+          <textarea
+            id="markdown-input"
+            class="w-full h-full p-2 font-mono resize-none outline-none"
+            placeholder="Escribe tu código Markdown aquí..."
+          ></textarea>
+        </section>
+        <section
+          id="preview-section"
+          class="border-t md:border-l space-y-3 md:border-t-0 h-full p-4 overflow-auto"
+        ></section>
+      </article>
+    </main>
+    <footer class="hidden"></footer>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
