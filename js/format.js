@@ -1,10 +1,26 @@
+function formatTextToCursiveOrBold(text) {
+  if (currentSelectedText) {
+    text = text.replace(
+      currentSelectedText,
+      state ? `**${currentSelectedText}**` : `*${currentSelectedText}*`
+    );
+    state = !state;
+    changeBtnName();
+  }
+
+  return text;
+}
+
 function getTextFromTextArea(callback) {
-  const text = markdownInput.value;
+  let text = markdownInput.value;
 
   if (text === "") {
     alert("Debe ingresar un texto para poder generar el MD");
     return; // termine la ejecución luego de mostrar la alert
   }
+
+  text = formatTextToCursiveOrBold(text);
+
   callback(text);
 }
 
@@ -35,10 +51,25 @@ function convertHeadings(html) {
   return html;
 }
 
+function convertBold(html) {
+  // **hola**
+  return html.replace(
+    /\*\*([^\*]+)\*\*/g,
+    "<strong class='text-red-500'>$1</strong>"
+  );
+}
+
+function converCursive(html) {
+  // *hola*
+  return html.replace(/\*([^\*]+)\*/g, "<i>$1</i>");
+}
+
 function convertToHtml(text) {
   let html = text;
   // evaluamos titulo
   html = convertHeadings(html);
+  html = convertBold(html);
+  html = converCursive(html);
   // evaluamos listas
   // evaluamos enlaces
   renderPreview(html); // HTML lo muestra en el preview
