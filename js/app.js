@@ -5,9 +5,13 @@ const generateHtml = document.querySelector("#generate-html");
 const markdownInput = document.querySelector("#markdown-input");
 const previewSection = document.querySelector("#preview-section");
 
-function getTextFromTextArea() {
+function getTextFromTextArea(callback) {
   const text = markdownInput.value;
-  return text;
+  if (text === "") {
+    alert("Debe ingresar un texto para poder generar el MD");
+    return; // termine la ejecución luego de mostrar la alert
+  }
+  callback(text);
 }
 
 function convertHeadings(html) {
@@ -43,8 +47,7 @@ function convertToHtml(text) {
   html = convertHeadings(html);
   // evaluamos listas
   // evaluamos enlaces
-
-  return html;
+  renderPreview(html); // HTML lo muestra en el preview
 }
 
 function renderPreview(html) {
@@ -53,8 +56,5 @@ function renderPreview(html) {
 
 // TODO: Cuando hagamos click en el boton generateHtml, tenemos que obtener el texto del textarea y trasnformalo a HTML y eso mostrarlo el preview
 generateHtml.addEventListener("click", function () {
-  // para obtener el texto de un input usamos el .value
-  const text = getTextFromTextArea(); // Obtiene el value del textarea
-  const html = convertToHtml(text); // convierte el value a un HTML
-  renderPreview(html); // HTML lo muestra en el preview
+  getTextFromTextArea(convertToHtml); // Obtiene el value del textarea
 });
