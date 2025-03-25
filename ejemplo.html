@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="bg-gray-100 h-screen">
+      <section class="text-center py-6 px-12">
+        <h1 class="text-3xl font-semibold">Contador de Caracteres</h1>
+        <div class="mt-5">
+          <textarea
+            name=""
+            id="text-content"
+            placeholder="Escribe un texto"
+            class="border border-gray-500 p-4 rounded h-30 w-full"
+          ></textarea>
+        </div>
+        <div class="flex w-full justify-between mt-5">
+          <p id="letters-count" class="text-green-800 font-semibold text-xl">
+            Cantidad actual
+          </p>
+          <p id="letters-remainder" class="text-red-500 font-semibold text-xl">
+            Restante
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="./ejemplo.js"></script>
+  </body>
+</html>
