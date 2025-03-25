@@ -1,5 +1,3 @@
-// button
-const generateHtml = document.querySelector("#generate-html");
 // textarea
 const markdownInput = document.querySelector("#markdown-input");
 // section preview
@@ -17,12 +15,16 @@ function changeBtnName() {
 
 changeBtnName();
 
+function renderOnInput() {
+  getTextFromTextArea(convertToHtml);
+}
+
+const debounceRender = debounce(renderOnInput, 300);
+
+markdownInput.addEventListener("input", debounceRender);
+
 markdownInput.addEventListener("select", function (event) {
   getSelectedText(event);
-});
-
-generateHtml.addEventListener("click", function () {
-  getTextFromTextArea(convertToHtml);
 });
 
 changeBoldOrCursive.addEventListener("click", function () {

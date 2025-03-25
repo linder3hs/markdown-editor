@@ -15,7 +15,7 @@ function getTextFromTextArea(callback) {
   let text = markdownInput.value;
 
   if (text === "") {
-    alert("Debe ingresar un texto para poder generar el MD");
+    // alert("Debe ingresar un texto para poder generar el MD");
     return; // termine la ejecución luego de mostrar la alert
   }
 

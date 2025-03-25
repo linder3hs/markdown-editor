@@ -29,5 +29,5 @@ function lettersCountAndRemainder() {
 }
 
 // 1 segundo = 1000 milisegundos
-const debounceCount = debounce(lettersCountAndRemainder, 200); // milisegundo
+const debounceCount = debounce(lettersCountAndRemainder, 300); // milisegundo
 textContent.addEventListener("input", debounceCount);
